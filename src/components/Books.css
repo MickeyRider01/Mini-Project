@@ -7,16 +7,28 @@ h1{
     font-size: 40;
     color: white;
 }
+h2{
+    padding-top: 100px;
+    margin-bottom:20px;
+    font-size: 30;
+}
 .SigninContainer{
+    align-items:"center";
     background-color:white;
     padding-top:200;
     padding-bottom:200;
-    padding-left: 300;
-    padding-right: 300;
-    margin:5%;
+
+    margin-left: 25%;
+    margin-right: 25%;
     border-radius: 30%;
     
 }
 .btn{
     background-color:greenyellow;
+}
+input{
+    margin-bottom: 20px;
+}
+button{
+    margin-bottom: 100px;
 }
