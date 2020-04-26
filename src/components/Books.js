@@ -1,5 +1,6 @@
 import React from 'react';
 import './Books.css';
+import MainPage from './MainPage'
 
 export default () => {
     return(
@@ -12,7 +13,7 @@ export default () => {
                 <input className='input' type="text"/>
                 <div className='btnContainer'>
                     <button className='btn' /*onClick={()=>....}*/>Sign in</button>
-                    <button className='btn' /*onClick={()=>....}*/>Sign up</button>
+                    <button className='btn' onClick= {document.location =MainPage}>Sign up</button>
                 </div>
             </div>
             

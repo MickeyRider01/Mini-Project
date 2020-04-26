@@ -16,8 +16,8 @@ const config = {
   
 }; 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+//firebase.initializeApp(Config);
 //firebase.analytics();
-firebase.firestore().settings({timestampsInSnapshots:true});
+//firebase.firestore().settings({timestampsInSnapshots:true});
 
 export default config
