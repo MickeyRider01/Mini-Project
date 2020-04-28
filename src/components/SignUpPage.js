@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import './Books.css';
 import MainPage from './MainPage'
 
@@ -10,10 +10,11 @@ export default () => {
             <div className='SigninContainer' align="center">
                 <h2>Please Login</h2>
                 <input className='input' type="text"/><br/>
+                <input className='input' type="text"/><br/>
+                <input className='input' type="text"/><br/>
                 <input className='input' type="text"/>
                 <div className='btnContainer'>
-                    <button className='btn' /*onClick={()=>....}*/>Sign in</button>
-                    <button className='btn' onClick= {document.location =MainPage}>Sign up</button>
+                    <button className='btn' /*onClick= */>Sign up</button>
                 </div>
             </div>
             

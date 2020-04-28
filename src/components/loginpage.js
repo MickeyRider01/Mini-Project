@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import auth from '../firebase';
+/*import React, { useState } from 'react';
+import auth from '../index';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 import firebase from 'firebase'
 
-const Login =({ setSession })=>{
+const Loginpage =({ setSession })=>{
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   const handleLogin = async () => {
-    try {
+    //try {
       const response = await auth.signInWithEmailAndPassword(
         username,
         password
       );
       
-      const { user } = response;
+     /* const { user } = response;
 
       setSession({
         isLoggedIn: true,
@@ -64,8 +64,8 @@ const Login =({ setSession })=>{
     <div class="wrapper">
     <div class="form-signin">
     <h2 class="form-signin-heading">Please login</h2>
-    {/* <p1>{username} {password}</p1> */}
-    <input type="text" class="form-control" name="username" 
+    {/* <p1>{username} {password}</p1> }*/
+   /* <input type="text" class="form-control" name="username" 
     placeholder="Email Address" 
     onChange={(e) =>setUsername(e.target.value)}
     />
@@ -85,4 +85,4 @@ const Login =({ setSession })=>{
   );
 }
 
-export default Login;
+export default Loginpage;*/

@@ -8,7 +8,7 @@ const MainPage = () =>{
                 <h1>Beat Blog</h1>
             </header>
             <body>
-                <p>Hello world</p>
+                <p>Hello</p>
             </body>
         </div>
     )
