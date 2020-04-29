@@ -13,7 +13,9 @@ const MainPage = ({setSession}) =>{
             blogs.map( (blog, index)=> {
                return( 
                     <li key={index}>
-                        {blog.id} : {blog.title} : {blog.body}
+                        #{blog.id} : 
+                        <h2>{blog.title}</h2> 
+                        <a className="body-container">{blog.body}</a>
                     </li>
                 )
             } )
@@ -62,30 +64,37 @@ const MainPage = ({setSession}) =>{
     }
     
     return(
-        <div>
-            <header>
-                <h1>Beat Blog</h1>
-                <button type="button" onClick={handleLogout}>LogOut</button>
-            </header>
-            <div className="BlogInput">
+        <div className="MainPageStyle">
+            
+            <div align="right">
+                <button className="btn-Logout" type="button" onClick={handleLogout} >LogOut</button>
+            </div>
+            <h1 className="head">Beat Blog</h1>
+            <div className="BlogInput" >
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <input 
-                            type="text" 
-                            name="title" 
-                            placeholder="Title" 
-                            onChange={(e)=>setTitle(e.target.value)}  
-                            className="form-control"/>
+                    <div className="post-container">
+                        <div className="form-group" align="center">
+                            <input 
+                                type="text" 
+                                name="title" 
+                                placeholder="Title" 
+                                onChange={(e)=>setTitle(e.target.value)}  
+                                //className="form-control"
+                                className="blogTitle"/>
+                        </div>
+                        <div className="form-group" align="center">
+                            <textarea 
+                                type="text" 
+                                name="body" 
+                                placeholder="Body"  
+                                onChange={(e)=>setBody(e.target.value)}
+                                //className="form-control"
+                                className="blogBody"/>
+                        </div>
+                        <div align="center">
+                            <button className="btn-post" onClick={addBlog} >Post</button>
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <input 
-                            type="text" 
-                            name="body" 
-                            placeholder="Body"  
-                            onChange={(e)=>setBody(e.target.value)}
-                            className="form-control"/>
-                    </div>
-                    <button className="btn btn-primary" onClick={addBlog}>Post</button>
                     <ul>{renderBlog()}</ul>
                 </form>
             </div>

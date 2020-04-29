@@ -16,8 +16,31 @@ const SignIn = ({setSession}) => {
     const [password, setPassword] = useState('');
     const handleLogin = async () =>{
         try {
-            const response = await auth.signInWithEmailAndPassword(username, password);
+            const response = await auth.signInWithEmailAndPassword(
+                username, 
+                password);
+
             const { user } = response;
+            setSession({
+                isLoggedIn: true,
+                currentUser: user
+            });
+        }catch (error){
+            setSession({
+                isLoggedIn: false,
+                currentUser: null,
+                errorMessage: error.message
+            });
+        }
+    }
+    const handleSignup = async () =>{
+        try {
+            const response = await auth.createUserWithEmailAndPassword(
+                username, 
+                password);
+
+            const { user } = response;
+            
             setSession({
                 isLoggedIn: true,
                 currentUser: user
@@ -36,6 +59,7 @@ const SignIn = ({setSession}) => {
     const handlePassword = e =>{
         setPassword(e.target.value)
     }
+   
     const renderSignUp = () =>{
         return(
             <SignUpPage/>
@@ -43,16 +67,20 @@ const SignIn = ({setSession}) => {
     }
     return(
         
-        <div className='LoginPage-Container'>
-            <h1>Welcome to Beat Blog</h1>
+        <div className='LoginPage-Container' align="center">
+            <h1 className="welcome-message">Welcome to Beat Blog</h1>
             <div className='SigninContainer' align="center">
-                <h2>Please Login</h2>
-                <input className='input' type="email" placeholder="Email" onChange={handleUsername}/><br/>
-                <input className='input' type="password" placeholder="Password" onChange={handlePassword}/>
-                <div className='btnContainer'>
-                    <button className='btn' onClick={handleLogin} >Sign in</button>
-                    <button  className='btn' onClick = {renderSignUp} >Sign Up</button>
+                <h2 className="text-login">Please SignIn or SignUp</h2>
+                <div className="signin-con">
+                    <input className='input' type="email" placeholder="Email" onChange={handleUsername}/><br/>
+                    <input className='input' type="password" placeholder="Password" onChange={handlePassword}/>
+                    <div className='btnContainer'>
+                        <button className='btn' onClick={handleLogin} >Sign in</button>
+                        <button  className='btn' onClick = {handleSignup} >Sign Up</button>
+                    </div>
                 </div>
+                <p className='credit' align="center">This Website Created by : Mikael Yapa </p>
+                <p className='credit' align="center">Student id : 5935512082 </p>
             </div>
             
         </div>
