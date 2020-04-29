@@ -1,7 +1,7 @@
 html,header{
     background-color: rgb(0, 180, 252);
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
-body{
+.BlogInput{
     background-color: white;
 }

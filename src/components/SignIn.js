@@ -2,10 +2,16 @@ import React ,{ useState } from 'react';
 import './Books.css';
 import auth from './firebase';
 import MainPage from './MainPage';
+import SignUpPage from './SignUpPage';
+import { useHistory, NavLink, Link } from 'react-router-dom';
+import 'react-router-dom';
+import 'react-dom';
+import {Button} from "reactstrap";
 
 
 
 const SignIn = ({setSession}) => {
+    //const history = useHistory();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const handleLogin = async () =>{
@@ -30,6 +36,11 @@ const SignIn = ({setSession}) => {
     const handlePassword = e =>{
         setPassword(e.target.value)
     }
+    const renderSignUp = () =>{
+        return(
+            <SignUpPage/>
+        );
+    }
     return(
         
         <div className='LoginPage-Container'>
@@ -40,6 +51,7 @@ const SignIn = ({setSession}) => {
                 <input className='input' type="password" placeholder="Password" onChange={handlePassword}/>
                 <div className='btnContainer'>
                     <button className='btn' onClick={handleLogin} >Sign in</button>
+                    <button  className='btn' onClick = {renderSignUp} >Sign Up</button>
                 </div>
             </div>
             

@@ -5,6 +5,9 @@ import SignUp from './components/SignUpPage'
 import './App.css'
 import Loginpage from './components/loginpage';
 import auth from './components/firebase';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import SignUpPage from './components/SignUpPage';
+
 
 
 const App = () =>{
@@ -30,11 +33,15 @@ const App = () =>{
   if (session.isLoggedIn){
   }
   return(
-    <div>
-      {
-        session.isLoggedIn ? (<MainPage/>) : (<SignIn setSession={setSession}/>)
-      }
-    </div>
+
+      <div>
+        {
+          session.isLoggedIn ? (<MainPage setSession={setSession}/>) : (<SignIn setSession={setSession}/>)
+        }
+        
+      </div>
+      
+
   )
   
 }
