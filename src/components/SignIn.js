@@ -2,7 +2,6 @@ import React ,{ useState } from 'react';
 import './Books.css';
 import auth from './firebase';
 import MainPage from './MainPage';
-import SignUpPage from './SignUpPage';
 import { useHistory, NavLink, Link } from 'react-router-dom';
 import 'react-router-dom';
 import 'react-dom';
@@ -40,7 +39,7 @@ const SignIn = ({setSession}) => {
                 password);
 
             const { user } = response;
-            
+
             setSession({
                 isLoggedIn: true,
                 currentUser: user
@@ -60,11 +59,7 @@ const SignIn = ({setSession}) => {
         setPassword(e.target.value)
     }
    
-    const renderSignUp = () =>{
-        return(
-            <SignUpPage/>
-        );
-    }
+    
     return(
         
         <div className='LoginPage-Container' align="center">

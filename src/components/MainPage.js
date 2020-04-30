@@ -8,24 +8,29 @@ const MainPage = ({setSession}) =>{
     const [blogs, setBlogs] = useState([
         /*{id:1, title:'test',body:'just test'}*/
     ]);
+    //const [comments, setComments] = useState([]);
+    //const [comment, setComment] = useState('');
     const renderBlog = () => {
         return (
             blogs.map( (blog, index)=> {
+                
                return( 
                     <li key={index}>
                         #{blog.id} : 
                         <h2>{blog.title}</h2> 
                         <a className="body-container">{blog.body}</a>
+                        
                     </li>
                 )
             } )
         )
     }
 
-    const {blog,setblog} = useState('')
+
+    //const {blog,setblog} = useState('')
 
     useEffect(()=>{
-        retriveData()
+        retriveData();
     },[])
     
 
@@ -39,12 +44,13 @@ const MainPage = ({setSession}) =>{
             setBlogs(myblog)
         })
     }
+ 
 
     const addBlog = () => {
         let id = blogs[blogs.length-1].id+1
         firestore.collection('blogs').doc(id+'').set({id,title,body})
     }
-
+    
     const handleLogout = () => {
         auth.signOut().then(response =>{
             setSession({

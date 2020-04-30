@@ -1,12 +1,9 @@
 import React ,{useState, useEffect} from 'react';
 import SignIn from './components/SignIn'
 import MainPage from './components/MainPage'
-import SignUp from './components/SignUpPage'
 import './App.css'
-import Loginpage from './components/loginpage';
 import auth from './components/firebase';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import SignUpPage from './components/SignUpPage';
+//import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 
 
@@ -33,17 +30,12 @@ const App = () =>{
   if (session.isLoggedIn){
   }
   return(
-
       <div>
         {
           session.isLoggedIn ? (<MainPage setSession={setSession}/>) : (<SignIn setSession={setSession}/>)
         }
         
       </div>
-      
-
   )
-  
 }
-
 export default App;
