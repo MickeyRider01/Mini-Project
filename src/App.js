@@ -3,12 +3,16 @@ import SignIn from './components/SignIn'
 import MainPage from './components/MainPage'
 import './App.css'
 import auth from './components/firebase';
+import {
+  BrowserRouter as Router,
+  Route
+ } from 'react-router-dom';
 //import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 
 
 const App = () =>{
-  const [session,setSession] = useState({
+  /*const [session,setSession] = useState({
     isLoggedIn: false,
     currentUser: null,
     errorMessage: null
@@ -28,13 +32,23 @@ const App = () =>{
     }
   })
   if (session.isLoggedIn){
-  }
+  }*/
   return(
-      <div>
+      /*<div>
         {
           session.isLoggedIn ? (<MainPage setSession={setSession}/>) : (<SignIn setSession={setSession}/>)
         }
-        
+      
+      </div>*/
+      <div>
+      <Router>
+        <Route path="/mainpage" exact component={MainPage} />
+        <Route path="/signin" exact component={SignIn}/>
+      </Router>
+      
+
+      
+        <MainPage />
       </div>
   )
 }

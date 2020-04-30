@@ -11,6 +11,8 @@ import {Button} from "reactstrap";
 
 const SignIn = ({setSession}) => {
     //const history = useHistory();
+    
+      
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const handleLogin = async () =>{
@@ -63,7 +65,7 @@ const SignIn = ({setSession}) => {
     return(
         
         <div className='LoginPage-Container' align="center">
-            <h1 className="welcome-message">Welcome to Beat Blog</h1>
+            <h1 className="welcome-message">Welcome to Blue Blog</h1>
             <div className='SigninContainer' align="center">
                 <h2 className="text-login">Please SignIn or SignUp</h2>
                 <div className="signin-con">

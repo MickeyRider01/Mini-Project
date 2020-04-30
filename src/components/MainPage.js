@@ -2,14 +2,19 @@ import React, {useState, useEffect} from 'react';
 import './MainPage.css'
 import auth from './firebase';
 import {firestore} from './firebase/index'
-const MainPage = ({setSession}) =>{
+import SignIn from './SignIn'
+const MainPage = (/*{setSession}*/) =>{
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [blogs, setBlogs] = useState([
         /*{id:1, title:'test',body:'just test'}*/
     ]);
-    //const [comments, setComments] = useState([]);
-    //const [comment, setComment] = useState('');
+    const [session,setSession] = useState({
+        isLoggedIn: false,
+        currentUser: null,
+        errorMessage: null
+      });
+
     const renderBlog = () => {
         return (
             blogs.map( (blog, index)=> {
@@ -19,6 +24,7 @@ const MainPage = ({setSession}) =>{
                         #{blog.id} : 
                         <h2>{blog.title}</h2> 
                         <a className="body-container">{blog.body}</a>
+                        
                         
                     </li>
                 )
@@ -31,6 +37,18 @@ const MainPage = ({setSession}) =>{
 
     useEffect(()=>{
         retriveData();
+        const handleAuth = auth.onAuthStateChanged(user=>{
+            if(user){
+              setSession({
+                isLoggedIn: true,
+                currentUser: user,
+                errorMessage: null
+              })
+            }
+          });
+          return ()=>{
+            handleAuth()
+          }
     },[])
     
 
@@ -63,19 +81,22 @@ const MainPage = ({setSession}) =>{
         e.preventDefault();
         const post = {
             title: title,
-            body: body
+            body: body,
         }
         //auth.push(post);
         //setPassword(e.target.value)
     }
     
     return(
-        <div className="MainPageStyle">
+        <div>
+        {
+          session.isLoggedIn ?
+        (<div className="MainPageStyle">
             
             <div align="right">
                 <button className="btn-Logout" type="button" onClick={handleLogout} >LogOut</button>
             </div>
-            <h1 className="head">Beat Blog</h1>
+            <h1 className="head">Blue Blog</h1>
             <div className="BlogInput" >
                 <form onSubmit={handleSubmit}>
                     <div className="post-container">
@@ -104,6 +125,8 @@ const MainPage = ({setSession}) =>{
                     <ul>{renderBlog()}</ul>
                 </form>
             </div>
+        </div>) : (<SignIn setSession={setSession}/>)
+        }
         </div>
     )
 
